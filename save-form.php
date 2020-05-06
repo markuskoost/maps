@@ -8,9 +8,10 @@ $description = mysqli_real_escape_string($mysqli, $_REQUEST['description']);
 
 // Attempt insert query execution
 $sql = "INSERT INTO markers(name, lat, lng, description) VALUES ('$name', '$lat', '$lng', '$description')";
-if(mysqli_query($mysqli, $sql)){
-    echo "Records added successfully.";
-} else{
+if (mysqli_query($mysqli, $sql)) {
+    $referer = $_SERVER['HTTP_REFERER'];
+    header("Location: $referer");
+} else {
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($mysqli);
 }
 
