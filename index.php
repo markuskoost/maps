@@ -35,9 +35,12 @@
 
         console.log(data);
 
-        var content = '<form action="delete-marker.php" method="post">' +
+        var content = '<form action="edit-marker.php" method="post">' +
             '<p>' + data.description + '</p><br>' +
+            '<input type="text" id="latitude" name="latitude" value=' + data.lat +'><br>' +
+            '<input type="text" id="longitude" name="longitude" value=' + data.lng +'><br>' +
             '<input type="hidden" name="id" value=' + data.id + '/>' +
+            '<input type="submit" name="update" value="update" >' +
             '<input type="submit" name="delete" value="delete" >' +
             '</form>';
 
@@ -54,7 +57,6 @@
 
         marker.addListener('click', function() {
             infowindow.open(map, marker);
-            map.setZoom(20);
             map.setCenter(marker.getPosition());
         });
     }
