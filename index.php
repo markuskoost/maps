@@ -1,11 +1,3 @@
-<?php
-if(isset($_POST['deleteItem']) and is_numeric($_POST['deleteItem'])) {
-    // here comes your delete query: use $_POST['deleteItem'] as your id
-    // $delete = $_POST['deleteItem']
-    // $sql = "DELETE FROM `tablename` where `id` = '$delete'";
-
-}
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,18 +35,10 @@ if(isset($_POST['deleteItem']) and is_numeric($_POST['deleteItem'])) {
 
         console.log(data);
 
-        // var content = '<div id="content">'+
-        //     '<div id="siteNotice">'+
-        //     '</div>'+
-        //     '<div id="bodyContent">'+
-        //     '<p>'+ data.description +'</p>'+
-        //     '<button type="button">Click Me!</button>' +
-        //     '</div>'+
-        //     '</div>';
-
-        var content = '<form action="" method="post">' +
+        var content = '<form action="delete-marker.php" method="post">' +
             '<p>' + data.description + '</p><br>' +
-            '<input type="submit" name="deleteMarker">' +
+            '<input type="hidden" name="id" value=' + data.id + '/>' +
+            '<input type="submit" name="delete" value="delete" >' +
             '</form>';
 
 
