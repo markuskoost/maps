@@ -36,9 +36,15 @@
         console.log(data);
 
         var content = '<form action="edit-marker.php" method="post">' +
-            '<p>' + data.description + '</p><br>' +
+            '<p>Name: </p>' +
+            '<input type="text" id="name" name="name" value=' + data.name +'><br>' +
+            '<p>Description: </p>' +
+            '<input type="text" id="description" name="description" value=' + data.description +'><br>' +
+            '<p>Latitude: </p>' +
             '<input type="text" id="latitude" name="latitude" value=' + data.lat +'><br>' +
+            '<p>Longitude: </p>' +
             '<input type="text" id="longitude" name="longitude" value=' + data.lng +'><br>' +
+            '<br>' +
             '<input type="hidden" name="id" value=' + data.id + '/>' +
             '<input type="submit" name="update" value="update" >' +
             '<input type="submit" name="delete" value="delete" >' +
@@ -84,6 +90,16 @@
             zoom: 8
         });
 
+        map.addListener('click', function(e) {
+
+            console.log(e.latLng.lat())
+            console.log(e.latLng.lng())
+
+            var location = {lat: e.latLng.lat(), lng: e.latLng.lng()}
+            createMarker(location);
+            document.getElementById('lat').value = e.latLng.lat();
+            document.getElementById('lng').value = e.latLng.lng();
+        });
     }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
