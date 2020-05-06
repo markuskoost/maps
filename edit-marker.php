@@ -6,6 +6,7 @@ $name = $_POST['name'];
 $description = $_POST['description'];
 $lat = $_POST['latitude'];
 $lng = $_POST['longitude'];
+$date = date("Y-m-d H:i:s");
 
 if (isset($_POST['delete']) && $_POST['delete'] == 'delete') {
     $delete = "DELETE FROM markers WHERE id = '$id'";
@@ -17,7 +18,7 @@ if (isset($_POST['delete']) && $_POST['delete'] == 'delete') {
         echo "Error deleting record: " . $mysqli->error;
     }
 } elseif (isset($_POST['update']) && $_POST['update'] == 'update') {
-    $update = "UPDATE markers SET name = '$name', lat = '$lat', lng = '$lng', description = '$description' WHERE id = '$id' ";
+    $update = "UPDATE markers SET name = '$name', lat = '$lat', lng = '$lng', description = '$description', edited = '$date'  WHERE id = '$id'";
 
     if ($mysqli->query($update) === TRUE) {
         $referer = $_SERVER['HTTP_REFERER'];
