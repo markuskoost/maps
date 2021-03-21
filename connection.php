@@ -1,10 +1,10 @@
 <?php
 
 $mysqli = new mysqli(
+    "127.0.0.1",
+    "localhost",
     "x",
-    "x",
-    "x",
-    "x"
+    "test"
 );
 
 /* check connection */
