@@ -1,10 +1,10 @@
 <?php
 
 $mysqli = new mysqli(
-    "localhost:3306",
-    "markus",
-    "password",
-    "test"
+    "eu-cdbr-west-01.cleardb.com",
+    "b900b8811d8d06",
+    "b5f89b7b",
+    "eu-cdbr-west-01.cleardb.com"
 );
 
 /* check connection */
